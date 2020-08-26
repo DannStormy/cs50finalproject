@@ -1,0 +1,80 @@
+{%extends "layout.html"%}
+    {%block main%}
+        {%if row != []%}
+            {%for row in row%}
+                <div class="d-flex justify-content-center">
+                    <div class="form-group row">
+                        <div class="col-sm-10 offset-sm-1 text-center">
+                            <form enctype="multipart/form-data" action="/profile" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">City</label>
+                                    <input value="{{row[1]}}"autocomplete="off" autofocus class="form-control" name="city" placeholder="City" type="text" id="top"> 
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Country</label>
+                                    <input value="{{row[2]}}"autocomplete="off" class="form-control" name="country" placeholder="Country" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Looking For</label>
+                                    <select class="form-control" name="interest">
+                                        <option selected="selected">{{row[3]}}</option>
+                                        <option>Love</option>
+                                        <option>Relationship</option>
+                                        <option>Friendship</option>
+                                        <option>Fun</option>
+                                        <option>Partner</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group green-border-focus">
+                                    <label for="exampleFormControlTextarea1">Bio</label>
+                                    <textarea class="form-control" name="bio" rows="3">{{row[4]}}</textarea>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="file" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                                <button class="btn btn-dark" type="submit">Edit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {%endfor%}
+        {%else%}
+            <div class="d-flex justify-content-center">
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-1 text-center">
+                        <form enctype="multipart/form-data" action="/profile" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">City</label>
+                                <input autocomplete="off" autofocus class="form-control" name="city" placeholder="City" type="text" id="top"> 
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Country</label>
+                                <input autocomplete="off" class="form-control" name="country" placeholder="Country" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Looking For</label>
+                                <select class="form-control" name="interest">
+                                    <option>Love</option>
+                                    <option>Relationship</option>
+                                    <option>Friendship</option>
+                                    <option>Fun</option>
+                                    <option>Partner</option>
+                                </select>
+                            </div>
+                            <div class="form-group green-border-focus">
+                                <label for="exampleFormControlTextarea1">Bio</label>
+                                <textarea class="form-control" name="bio" rows="3"></textarea>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose file</label>
+                            </div>
+                                <button class="btn" style="background-color:rgb(86, 61, 124); color:white;" type="submit">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {%endif%}
+    {%endblock%}

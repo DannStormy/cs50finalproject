@@ -1,0 +1,52 @@
+body{
+background-color: white;
+}
+
+.nav-link
+{
+    color:white ;
+}
+.nav-link:hover
+{
+    color:wheat;
+}
+#nav
+{
+    background-color:rgb(86, 61, 124);
+}
+.form-control
+{
+    /* center form controls */
+    display: inline-block;
+    
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+.welcome
+{
+    text-align:center;
+}
+#top
+{
+    margin-top:10%;
+}
+
+#alert
+{
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border-radius:0px
+}

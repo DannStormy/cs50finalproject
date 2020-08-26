@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Hello</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <title>Welcome</title>
+    </head>
+    <body>
+        {%if session.user_id%}
+            <nav class="navbar navbar-expand-sm" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/makealist">Make-A-List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/mybucketlist">MyBucketList</a></li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/logout" id="logout">Logout</a></li>
+                </ul>
+            </nav>
+        {%else%}
+            <nav class="navbar navbar-expand-sm" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>                    
+                </ul>
+            </nav>
+        {%endif%}
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-dismissible" style="background-color: wheat;">
+                <strong>{{message}}!</strong>
+            </div>
+        {% endfor %}
+        {%block main%}
+        {%endblock%}
+    </body>
+    <footer class="small text-center text-muted">
+        {%block footer%}
+        {%endblock%}
+    </footer>
+</html>

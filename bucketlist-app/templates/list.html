@@ -1,0 +1,31 @@
+{%extends "layout.html"%}
+
+{%block main%}
+    <table style="width:100%" class="table table-striped table-light table-bordered table-hover">
+        <thead class="thead-light"></thead>
+        <tr>
+          <th>List</th>
+          <th>Date/Time Added</th>
+          <th></th>
+        </tr>
+        <tr>
+            {% for list in lists %}
+                <tr>
+                    <td>{{list[1]}}</td>
+                    <td>{{list[2]}}</td>
+                    <td>
+                        <form method="post">
+                            <input type="hidden" value="{{list[1]}}" name="list-value">
+                            <button class="btn btn-outline-dark">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tr>
+       </table>
+       <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-info mr-1"><i class="fab fa-twitter pr-1"></i>Share on Twitter</button>
+            <button type="button" class="btn btn-primary"><i class="fab fa-facebook pr-1"></i>Share on Facebook</button>
+       </div>
+ 
+{%endblock%}

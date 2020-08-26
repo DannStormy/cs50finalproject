@@ -1,0 +1,22 @@
+{%extends "layout.html"%}
+    {%block main%}
+        <div class="d-flex justify-content-center" style="margin-top: 5%;"> 
+            <div class="card" style="width: 18rem; background-color:rgb(86, 61, 124);">
+                <h4 class="list-group-item " style="color: antiquewhite; background-color:rgb(86, 61, 124);"><strong>@{{user}}</strong></h4>
+            {%for row in rows%}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><img class="card-img-top" src='{{ url_for("profile_image", ident = row[0]) }}' /></li> 
+                    <li class="list-group-item">Location - {{ row[1] }}, {{row[2]}}</li>
+                    <li class="list-group-item">Looking for - {{row[3] }}</li>
+                    <li class="list-group-item">Bio - {{row[4]}}</li>
+                </ul>  
+            {%endfor%}
+                <p class="list-group-item">BucketList Size - {{count}}</p>
+                <form action="/edit" method="post">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn" style="background-color:rgb(86, 61, 124); color:white;">Edit Profile</button>
+                    </div>
+                </form>
+            </div>
+        </div>        
+    {%endblock%}
