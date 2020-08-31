@@ -86,7 +86,7 @@ def login():
                 #remembe which user logged in
                 session['user_id'] = current_id
                 flash("Logged In")
-                return render_template("bucketlist.html")
+                return redirect("/makealist")
         flash("error 404")
         return "error, invalid name/password"
 
