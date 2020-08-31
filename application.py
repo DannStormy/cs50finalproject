@@ -28,6 +28,10 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 
 
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
+
+
 Session(app)
 filePath = os.path.abspath("database.db")
 conn = connect(filePath, check_same_thread=False)
