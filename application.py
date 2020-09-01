@@ -11,6 +11,7 @@ from functools import wraps
 from tempfile import mkdtemp
 import datetime
 from io import BytesIO
+import os
 
 
 
@@ -68,6 +69,11 @@ def login_required(f):
 @app.route("/")
 def welcome():
     return render_template("welcome.html")
+
+def index(request):
+    times = int(os.environ.get('TIMES',3))
+    return HttpResponse('Hello! ' * times)
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
