@@ -57,10 +57,6 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
-<<<<<<< HEAD
-=======
-            flash("session expired")
->>>>>>> eb8bccd0ca76f911df99cdc63de2d152042f7f68
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
@@ -75,7 +71,7 @@ def welcome():
 
 def index(request):
     times = int(os.environ.get('TIMES',3))
-    return HttpResponse('Hello! ' * times)
+    return url_for('Hello! ' * times)
 
 
 @app.route("/login", methods=["GET", "POST"])
