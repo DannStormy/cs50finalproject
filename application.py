@@ -11,6 +11,7 @@ from functools import wraps
 from tempfile import mkdtemp
 import datetime
 from io import BytesIO
+import os
 
 
 
@@ -56,6 +57,10 @@ def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get("user_id") is None:
+<<<<<<< HEAD
+=======
+            flash("session expired")
+>>>>>>> eb8bccd0ca76f911df99cdc63de2d152042f7f68
             return redirect("/login")
         return f(*args, **kwargs)
     return decorated_function
@@ -67,6 +72,11 @@ def login_required(f):
 @app.route("/")
 def welcome():
     return render_template("welcome.html")
+
+def index(request):
+    times = int(os.environ.get('TIMES',3))
+    return HttpResponse('Hello! ' * times)
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
