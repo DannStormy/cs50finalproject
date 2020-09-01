@@ -37,9 +37,8 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0')
 
 
-def index(request):
-    times = int(os.environ.get('TESTING',3))
-    return url_for('Hello! ' * times)
+times = int(os.environ.get('TESTING', None))
+
 
 
 
