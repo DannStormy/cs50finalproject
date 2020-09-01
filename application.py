@@ -27,10 +27,20 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config.update(
+    TESTING=True,
+    SECRET_KEY=b'_5#y2L"F4Q8z\n\xec]/'
+)
 
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
+
+
+def index(request):
+    times = int(os.environ.get('TESTING',3))
+    return url_for('Hello! ' * times)
+
 
 
 Session(app)
@@ -68,10 +78,6 @@ def login_required(f):
 @app.route("/")
 def welcome():
     return render_template("welcome.html")
-
-def index(request):
-    times = int(os.environ.get('TIMES',3))
-    return url_for('Hello! ' * times)
 
 
 @app.route("/login", methods=["GET", "POST"])
